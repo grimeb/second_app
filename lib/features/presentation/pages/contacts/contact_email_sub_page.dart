@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/components/portfolio_gallery_image_widget.dart';
-import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_detail_page.dart';
+// import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_detail_page.dart';
 import 'package:second_app/features/presentation/pages/contacts/contact_email_detail_page.dart';
 
 class ContactEmailSubPage extends StatelessWidget {

@@ -76,28 +76,28 @@ class _ScheduleCreateDetailPageState extends State<ScheduleCreateDetailPage> {
     );
   }
 
-  Row _buildDottedIndicator() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: widget.imagePaths
-          .map<Widget>((String imagePath) => _buildDot(imagePath))
-          .toList(),
-    );
-  }
+  // Row _buildDottedIndicator() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: widget.imagePaths
+  //         .map<Widget>((String imagePath) => _buildDot(imagePath))
+  //         .toList(),
+  //   );
+  // }
 
-  Container _buildDot(String imagePath) {
-    return Container(
-      width: 8,
-      height: 8,
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: _currentIndex == widget.imagePaths.indexOf(imagePath)
-            ? Colors.white
-            : Colors.grey.shade700,
-      ),
-    );
-  }
+  // Container _buildDot(String imagePath) {
+  //   return Container(
+  //     width: 8,
+  //     height: 8,
+  //     margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+  //     decoration: BoxDecoration(
+  //       shape: BoxShape.circle,
+  //       color: _currentIndex == widget.imagePaths.indexOf(imagePath)
+  //           ? Colors.white
+  //           : Colors.grey.shade700,
+  //     ),
+  //   );
+  // }
 
   PhotoViewGallery _buildPhotoViewGallery() {
     return PhotoViewGallery.builder(

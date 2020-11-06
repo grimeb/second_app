@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/features/presentation/components/account_details_sliver_app_bar.dart';
+// import 'package:second_app/features/presentation/components/account_details_sliver_app_bar.dart';
 // import 'package:tuple/tuple.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 // import 'package:intl/intl.dart';
 
 //The main dart for AccountDetailsPage is named "account_page.dart"
 
-class AccountPersonalInfoSubPage extends StatelessWidget {
+class AccountPersonalInfoSubPage extends StatefulWidget {
   AccountPersonalInfoSubPage({Key key}) : super(key: key);
 
+  @override
+  _AccountPersonalInfoSubPageState createState() =>
+      _AccountPersonalInfoSubPageState();
+}
+
+class _AccountPersonalInfoSubPageState
+    extends State<AccountPersonalInfoSubPage> {
   String _name;
+
   String _email;
+
   String _password;
+
   String _url;
+
   String _phoneNumber;
 
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
@@ -51,6 +62,7 @@ class AccountPersonalInfoSubPage extends StatelessWidget {
                         TextFormField(
                           decoration:
                               InputDecoration(labelText: 'Confirm Password'),
+                          // ignore: missing_return
                           validator: (String value) {
                             if (value.isEmpty) {
                               return 'Click the "Forgot Login?" button for help!';

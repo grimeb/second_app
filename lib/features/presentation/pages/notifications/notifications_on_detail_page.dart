@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/components/hero_widget.dart';
 import 'package:video_player/video_player.dart';
 
-class PortfolioTutorialDetailPage extends StatefulWidget {
+class NotificationsOnDetailPage extends StatefulWidget {
   final Object heroTag;
   final String desc;
   final String videoUrl;
 
-  const PortfolioTutorialDetailPage({
+  const NotificationsOnDetailPage({
     Key key,
     @required this.heroTag,
     @required this.desc,
@@ -19,12 +19,11 @@ class PortfolioTutorialDetailPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PortfolioTutorialDetailPageState createState() =>
-      _PortfolioTutorialDetailPageState();
+  _NotificationsOnDetailPageState createState() =>
+      _NotificationsOnDetailPageState();
 }
 
-class _PortfolioTutorialDetailPageState
-    extends State<PortfolioTutorialDetailPage> {
+class _NotificationsOnDetailPageState extends State<NotificationsOnDetailPage> {
   ChewieController _chewieController;
 
   @override

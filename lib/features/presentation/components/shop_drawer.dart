@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/pages/account_details/account_page.dart';
+import 'package:second_app/features/presentation/pages/notifications/notifications_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_page.dart';
 import 'package:second_app/features/presentation/pages/contacts/contact_page.dart';
 import 'package:second_app/features/presentation/pages/schedule/schedule_page.dart';
@@ -164,7 +165,7 @@ class ShopDrawer extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pop();
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => PortfolioPage()),
+          MaterialPageRoute(builder: (context) => NotificationsPage()),
         );
       },
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/components/contacts_sliver_app_bar.dart';
-import 'package:second_app/features/presentation/pages/account_details/account_personal_info_sub_page.dart';
+// import 'package:second_app/features/presentation/pages/account_details/account_personal_info_sub_page.dart';
 import 'package:second_app/features/presentation/delegates/sliver_persistent_header_delegate_impl.dart';
 // import 'package:second_app/features/presentation/pages/contact_page/contact_info_page.dart';
 import 'package:second_app/features/presentation/pages/contacts/contact_name_sub_page.dart';
