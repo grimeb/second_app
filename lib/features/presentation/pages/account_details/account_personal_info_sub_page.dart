@@ -130,6 +130,7 @@ class _AccountPersonalInfoSubPageState
     return TextFormField(
       decoration: InputDecoration(labelText: 'Name'),
       keyboardType: TextInputType.name,
+      // ignore: missing_return
       validator: (String value) {
         if (value.isEmpty) {
           return 'Name is required';
@@ -145,6 +146,7 @@ class _AccountPersonalInfoSubPageState
     return TextFormField(
       decoration: InputDecoration(labelText: 'Email'),
       keyboardType: TextInputType.emailAddress,
+      // ignore: missing_return
       validator: (String value) {
         if (value.isEmpty) {
           return 'Email is required';
@@ -160,6 +162,7 @@ class _AccountPersonalInfoSubPageState
     return TextFormField(
       decoration: InputDecoration(labelText: 'Password'),
       keyboardType: TextInputType.visiblePassword,
+      // ignore: missing_return
       validator: (String value) {
         if (value.isEmpty) {
           return 'Click the "Forgot Login?" button for help!';
@@ -175,6 +178,7 @@ class _AccountPersonalInfoSubPageState
     return TextFormField(
       decoration: InputDecoration(labelText: 'URL'),
       keyboardType: TextInputType.url,
+      // ignore: missing_return
       validator: (String value) {
         if (value.isEmpty) {
           return 'This field is optional';
@@ -190,6 +194,7 @@ class _AccountPersonalInfoSubPageState
     return TextFormField(
       decoration: InputDecoration(labelText: 'Phone number'),
       keyboardType: TextInputType.phone,
+      // ignore: missing_return
       validator: (String value) {
         if (value.isEmpty) {
           return 'This field is optional';
