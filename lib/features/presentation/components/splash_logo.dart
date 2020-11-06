@@ -17,10 +17,10 @@ class _SplashLogoState extends State<SplashLogo> {
   Widget build(BuildContext context) {
     return SplashScreen(
       routeName: "/",
-      seconds: 15,
+      seconds: 5,
       backgroundColor: Colors.black,
       image: Image.asset('assets/images/spinner2.gif'),
-      loaderColor: Colors.blue[300],
+      loaderColor: Colors.black,
       photoSize: 150.0,
       navigateAfterSeconds: MainScreen(),
     );
