@@ -1,50 +1,65 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/components/hero_widget.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_detail_page.dart';
 import 'package:tuple/tuple.dart';
 
 class PortfolioTutorialsSubPage extends StatelessWidget {
-  static const List<Tuple2> tutorials = [
-    const Tuple2<String, String>(
-      'https://elements-video-cover-images-0.imgix.net/files/17c74a26-2112-4bae-87d4-53f37e578115/inline_image_preview.jpg?auto=compress%2Cformat&fit=min&h=394&w=700&s=148d1a26ccf7cc72e94bbecbe01dd6b5',
-      'CyberPunk backgrounds #1 🚀',
+  const PortfolioTutorialsSubPage({Key key}) : super(key: key);
+
+  static const List<Tuple3> tutorials = [
+    const Tuple3<String, String, String>(
+      'https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg',
+      'Big Buck Bunny mp4🚀',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://i.imgur.com/XXI3y4g.jpg',
       'CyberPunk backgrounds #2 😪',
+      'https://cdn-l-cyberpunk.cdprojektred.com/video/CP77_web_loop_4K_June_Beat_trailer_2020.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://images.wallpapersden.com/image/download/background-of-cyberpunk-game_71766_3840x2160.jpg',
       'CyberPunk backgrounds #3 👍',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://thumbs.gfycat.com/BareFlashyAsiaticmouflon-size_restricted.gif',
       'CyberPunk backgrounds #4 ☘️',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://wallpaperaccess.com/full/676037.jpg',
       'CyberPunk backgrounds #5 👻',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://cdn.hipwallpaper.com/i/78/45/ZLg91k.jpg',
       'CyberPunk backgrounds #6 🦨',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://i.redd.it/qpi1ob3ior331.png',
       'CyberPunk backgrounds #7',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://external-preview.redd.it/U70WzpsaBilnO0ixDP17jYN6tr-2RuHn-qpGKlyntqs.jpg?auto=webp&s=1efdd946bcde188ec18cd7572020a25bb26b4ac7',
       'CyberPunk backgrounds #8',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://i.ytimg.com/vi/gSaosmXT0FU/maxresdefault.jpg',
       'CyberPunk backgrounds #9',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
-    const Tuple2<String, String>(
+    const Tuple3<String, String, String>(
       'https://gamertweak.com/wp-content/uploads/2019/07/cyberpunk-2077-three-staring-characters-1280x720.jpg',
       'CyberPunk backgrounds #10',
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     ),
   ];
 
@@ -53,17 +68,6 @@ class PortfolioTutorialsSubPage extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         _buildSliverContent(),
-
-        // test it out by making a list of a 100 items
-        // SliverList(
-        //     delegate: SliverChildListDelegate(
-        //   [
-        //     for (var i = 1; i < 101; i++)
-        //       ListTile(
-        //         title: Text(i.toString()),
-        //       ),
-        //   ],
-        // ))
       ],
     );
   }
@@ -80,11 +84,12 @@ class PortfolioTutorialsSubPage extends StatelessWidget {
     );
   }
 
-  Widget _buildListItem(BuildContext context, Tuple2 tutorial) {
+  Widget _buildListItem(BuildContext context, Tuple3 tutorial) {
     return Stack(
       children: <Widget>[
         _buildCardView(tutorial.item2, tutorial.item1),
-        _buildRippleEffectNavigation(context, tutorial.item2, tutorial.item1)
+        _buildRippleEffectNavigation(
+            context, tutorial.item2, tutorial.item1, tutorial.item3)
       ],
     );
   }
@@ -134,36 +139,58 @@ class PortfolioTutorialsSubPage extends StatelessWidget {
   }
 
   Widget _buildRippleEffectNavigation(
-      BuildContext context, String desc, String imageUrl) {
+      BuildContext context, String desc, String imageUrl, String videoUrl) {
     return Positioned.fill(
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           splashColor: Colors.purple.withOpacity(0.5),
           highlightColor: Colors.purple.withOpacity(0.5),
+
+          // ######### Return the video from the internet ##########
           onTap: () {
             Navigator.of(context).push(
-              _createTutorialDetailRoute(desc, imageUrl),
+              _createTutorialDetailRoute(desc, imageUrl, videoUrl),
             );
           },
+
+          // ########  FilePicker to get video path from phone storage  #########
+          // onTap: () async {
+          //   File videoFile = await FilePicker.getFile(type: FileType.any);
+          //   if (videoFile != null) {
+          //     videoUrl = videoFile.path;
+          //     Navigator.of(context).push(
+          //       _createTutorialDetailRoute(desc, imageUrl, videoUrl),
+          //     );
+          //   }
+          // },
         ),
       ),
     );
   }
 
-  PageRoute<Object> _createTutorialDetailRoute(desc, imageUrl) {
+  PageRoute<Object> _createTutorialDetailRoute(desc, imageUrl, videoUrl) {
     return PageRouteBuilder(
-        transitionDuration: Duration(seconds: 1),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(
-            opacity: (Tween(begin: 0.0, end: 1.0)
+      transitionDuration: Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
+              .chain(CurveTween(curve: Curves.ease))
+              .animate(animation),
+          child: FadeTransition(
+            opacity: Tween(begin: 0.0, end: 1.0)
                 .chain(CurveTween(curve: Curves.ease))
-                .animate(animation)),
+                .animate(animation),
             child: child,
-          );
-        },
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            PortfolioTutorialDetailPage(
-                heroTag: imageUrl, desc: desc, imageUrl: imageUrl));
+          ),
+        );
+      },
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          PortfolioTutorialDetailPage(
+        heroTag: imageUrl,
+        desc: desc,
+        videoUrl: videoUrl,
+      ),
+    );
   }
 }

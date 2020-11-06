@@ -1,18 +1,57 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/components/hero_widget.dart';
+import 'package:video_player/video_player.dart';
 
-class PortfolioTutorialDetailPage extends StatelessWidget {
+class PortfolioTutorialDetailPage extends StatefulWidget {
   final Object heroTag;
   final String desc;
-  final String imageUrl;
+  final String videoUrl;
 
-  const PortfolioTutorialDetailPage(
-      {Key key,
-      @required this.heroTag,
-      @required this.desc,
-      @required this.imageUrl})
-      : super(key: key);
+  const PortfolioTutorialDetailPage({
+    Key key,
+    @required this.heroTag,
+    @required this.desc,
+    @required this.videoUrl,
+  }) : super(key: key);
+
+  @override
+  _PortfolioTutorialDetailPageState createState() =>
+      _PortfolioTutorialDetailPageState();
+}
+
+class _PortfolioTutorialDetailPageState
+    extends State<PortfolioTutorialDetailPage> {
+  ChewieController _chewieController;
+
+  @override
+  void initState() {
+    super.initState();
+    _chewieController = ChewieController(
+        videoPlayerController: VideoPlayerController.network(widget.videoUrl),
+        // videoPlayerController:VideoPlayerController.asset('/assets/videos/IntroClip.mp4'),
+        // videoPlayerController:
+        // VideoPlayerController.file(File(widget.videoUrl)),
+        aspectRatio: 16 / 9,
+        autoInitialize: true,
+        autoPlay: true,
+        looping: true,
+        errorBuilder: (context, errorMessage) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                errorMessage,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,18 +75,17 @@ class PortfolioTutorialDetailPage extends StatelessWidget {
 
   HeroWidget _buildHeroWidget(BuildContext context) {
     return HeroWidget(
-      builder: (BuildContext context) {
-        return _buildHeroWidgetContent(imageUrl);
-      },
-      heroTag: heroTag,
+      heroTag: widget.heroTag,
       width: MediaQuery.of(context).size.width,
+      builder: (BuildContext context) {
+        return _buildHeroWidgetContent(widget.videoUrl);
+      },
     );
   }
 
-  CachedNetworkImage _buildHeroWidgetContent(String imageUrl) {
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+  Chewie _buildHeroWidgetContent(String imageUrl) {
+    return Chewie(
+      controller: _chewieController,
     );
   }
 
@@ -55,10 +93,17 @@ class PortfolioTutorialDetailPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        desc,
+        widget.desc,
         style: TextStyle(fontSize: 30),
         textAlign: TextAlign.center,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _chewieController.videoPlayerController.dispose();
+    _chewieController.dispose();
+    super.dispose();
   }
 }

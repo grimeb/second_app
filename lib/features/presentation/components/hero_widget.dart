@@ -33,11 +33,17 @@ class HeroWidget extends StatelessWidget {
         ),
         flightShuttleBuilder:
             (flightContext, animation, direction, fromContext, toContext) {
+          Widget flyingWidget = toContext.widget as Hero..child;
+
+          if (direction == HeroFlightDirection.push) {
+            flyingWidget = fromContext.widget as Hero..child;
+          }
+
           return RotationTransition(
             turns: Tween(begin: 0.0, end: 1.0)
                 .chain(CurveTween(curve: Curves.ease))
                 .animate(animation),
-            child: toContext.widget as Hero..child,
+            child: flyingWidget,
           );
           // if (direction == HeroFlightDirection.push) {
           //   return Icon(Icons.photo, size: 150);
