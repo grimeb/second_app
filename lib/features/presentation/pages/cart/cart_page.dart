@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:second_app/features/presentation/components/cart_sliver_app_bar.dart';
 import 'package:second_app/features/presentation/delegates/sliver_persistent_header_delegate_impl.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_sub_page.dart';
@@ -19,7 +20,8 @@ class _CartPageState extends State<CartPage>
     with SingleTickerProviderStateMixin {
   final List<Tuple3> _pages = [
     Tuple3('History', PortfolioTutorialsSubPage(), Icon(Icons.history)),
-    Tuple3('Payment Info', PortfolioGallerySubPage(), Icon(Icons.credit_card)),
+    Tuple3('Payment Info', PortfolioGallerySubPage(),
+        FaIcon(FontAwesomeIcons.paypal)),
     Tuple3('Checkout', PortfolioProjectsSubPage(), Icon(Icons.check_circle)),
   ];
 

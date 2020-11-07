@@ -48,7 +48,7 @@ class LandingScreen extends StatelessWidget {
                   width: 400,
                   height: 400,
                   decoration: BoxDecoration(
-                    color: Colors.blue[500],
+                    color: Colors.blue[900],
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
