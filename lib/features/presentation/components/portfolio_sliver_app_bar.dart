@@ -15,7 +15,7 @@ class PortfolioSliverAppBar extends StatelessWidget {
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
-      backgroundColor: Colors.purple[500],
+      backgroundColor: Colors.purple[900],
       expandedHeight: 100,
       pinned: true,
       floating: true,

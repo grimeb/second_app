@@ -1,134 +1,133 @@
-import 'dart:async';
-// ignore: avoid_web_libraries_in_flutter
-// import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:second_app/features/presentation/components/navigation_controls.dart';
-import 'package:second_app/features/presentation/components/shop_drawer.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:second_app/features/presentation/components/shop_sliver_app_bar.dart';
+import 'package:second_app/features/presentation/delegates/sliver_persistent_header_delegate_impl.dart';
+import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_sub_page.dart';
+import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_sub_page.dart';
+import 'package:second_app/features/presentation/pages/portfolio/portfolio_projects_sub_page.dart';
+import 'package:tuple/tuple.dart';
 
-// Web Viewer Page
+/*
+  REMINDER  // Import this root page in the shop_drawer.dart file so it shows up when clicked
+*/
 
 class ShopPage extends StatefulWidget {
-  ShopPage({Key key}) : super(key: key);
-
-  // Create state method
   @override
   _ShopPageState createState() => _ShopPageState();
 }
 
-class _ShopPageState extends State<ShopPage> {
-  final globalKey = GlobalKey<ScaffoldState>();
-  String _title = 'About Me Page';
+class _ShopPageState extends State<ShopPage>
+    with SingleTickerProviderStateMixin {
+  final List<Tuple3> _pages = [
+    Tuple3('Search', PortfolioTutorialsSubPage(), Icon(Icons.search)),
+    Tuple3('Quantity', PortfolioGallerySubPage(), Icon(Icons.add_to_queue)),
+    Tuple3('Add to cart', PortfolioProjectsSubPage(),
+        Icon(Icons.add_shopping_cart)),
+  ];
 
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _pages.length, vsync: this);
+    _tabController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: globalKey,
-      appBar: AppBar(
-        title: Text(_title),
-        actions: <Widget>[
-          NavigationControls(_controller.future),
-        ],
-      ),
-      drawer: ShopDrawer(),
-      body: _buildWebView(),
-      floatingActionButton: _buildShowUrlBtn(),
-    );
-  }
-
-  Widget _buildWebView() {
-    return WebView(
-      javascriptMode: JavascriptMode.unrestricted,
-      initialUrl:
-          'https://www.securitymagazine.com/articles/93856-capcom-suffers-security-breach',
-      onWebViewCreated: (WebViewController webViewController) {
-        _controller.complete(webViewController);
-      },
-      navigationDelegate: (request) {
-        return _buildNavigationDecision(request);
-      },
-      javascriptChannels: <JavascriptChannel>[
-        _createTopBarJsChannel(),
-      ].toSet(),
-      onPageFinished: (url) {
-        _showPageTitle();
-      },
-    );
-  }
-
-  // Widget _buildChangeTitleBtn() {
-  //   return FloatingActionButton(
-  //     onPressed: () {
-  //       setState(() {
-  //         _title = 'Learn more.';
-  //       });
-  //     },
-  //     child: Icon(Icons.title),
-  //   );
-  // }
-
-  // Code for future builder
-  Widget _buildShowUrlBtn() {
-    return FutureBuilder<WebViewController>(
-      future: _controller.future,
-      builder:
-          (BuildContext context, AsyncSnapshot<WebViewController> controller) {
-        if (controller.hasData) {
-          return FloatingActionButton(
-            onPressed: () async {
-              String url = await controller.data.currentUrl();
-
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text(
-                  'Current url is: $url',
-                  style: TextStyle(fontSize: 20),
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            ShopSliverAppBar(_pages[_tabController.index].item1),
+            SliverPersistentHeader(
+              delegate: SliverPersistentHeaderDelegateImpl(
+                color: Colors.purple,
+                tabBar: TabBar(
+                  labelColor: Colors.black,
+                  indicatorColor: Colors.black,
+                  controller: _tabController,
+                  tabs: _pages
+                      .map<Tab>((Tuple3 page) => Tab(text: page.item1))
+                      .toList(),
                 ),
-              ));
-            },
-            child: Icon(Icons.link),
-          );
-        }
-
-        return Container();
-      },
-    );
-  }
-
-  NavigationDecision _buildNavigationDecision(NavigationRequest request) {
-    if (request.url.contains('/work')) {
-      globalKey.currentState.showSnackBar(SnackBar(
-        content: Text(
-          'You do not have permission to WORK page',
-          style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ];
+        },
+        body: TabBarView(
+          controller: _tabController,
+          children: _pages.map<Widget>((Tuple3 page) => page.item2).toList(),
         ),
-      ));
-      return NavigationDecision.prevent;
-    }
-    return NavigationDecision.navigate;
-  }
-
-  void _showPageTitle() {
-    _controller.future.then((webViewController) {
-      webViewController
-          .evaluateJavascript('TopBarJsChannel.postMessage(document.title);');
-    });
-  }
-
-  JavascriptChannel _createTopBarJsChannel() {
-    return JavascriptChannel(
-        name: 'TopBarJsChannel',
-        onMessageReceived: (message) {
-          String newTitle = message.message;
-
-          if (newTitle.contains('-')) {
-            newTitle = newTitle.substring(0, newTitle.indexOf('-')).trim();
-          }
-          setState(() {
-            _title = newTitle;
-          });
-        });
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.purple[500],
+        child: TabBar(
+          unselectedLabelColor: Colors.grey,
+          labelColor: Colors.black,
+          indicatorColor: Colors.black,
+          controller: _tabController,
+          tabs: _pages
+              .map<Tab>((Tuple3 page) => Tab(
+                    text: page.item1,
+                    icon: page.item3,
+                  ))
+              .toList(),
+        ),
+      ),
+    );
   }
 }
+
+// int _selectedPage = 0;
+// PageController _pageController = PageController();
+
+// /////////// Under Scaffold in the build method ////////////
+// body: NestedScrollView(
+//         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+//           return <Widget>[
+//             PortfolioSliverAppBar(_pages[_selectedPage].item1),
+//           ];
+//         },
+//         body: PageView(
+//           children: _pages.map<Widget>((Tuple2 page) => page.item2).toList(),
+//           onPageChanged: (index) {
+//             setState(() {
+//               _selectedPage = index;
+//             });
+//           },
+//           controller: _pageController,
+//         ),
+//       ),
+//       bottomNavigationBar: BottomNavigationBar(
+//         backgroundColor: Colors.purple,
+//         iconSize: 40,
+//         selectedFontSize: 20,
+//         // type: BottomNavigationBarType.shifting,
+//         items: [
+//           BottomNavigationBarItem(
+//             // backgroundColor: Colors.red,
+//             icon: Icon(Icons.video_library),
+//             label: 'Tutorials',
+//           ),
+//           BottomNavigationBarItem(
+//             // backgroundColor: Colors.purple,
+//             icon: Icon(Icons.image),
+//             label: 'Gallery',
+//           )
+//         ],
+//         currentIndex: _selectedPage,
+//         onTap: (index) {
+//           setState(() {
+//             _selectedPage = index;
+//             _pageController.animateToPage(_selectedPage,
+//                 duration: Duration(milliseconds: 300), curve: Curves.linear);
+//           });
+//         },
+//       ),

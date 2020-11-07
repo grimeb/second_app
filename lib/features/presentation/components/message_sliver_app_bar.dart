@@ -1,9 +1,9 @@
 // Widget constructor
 import 'package:flutter/material.dart';
 
-class NotificationsSliverAppBar extends StatelessWidget {
+class MessageSliverAppBar extends StatelessWidget {
   final String _title;
-  const NotificationsSliverAppBar(
+  const MessageSliverAppBar(
     this._title, {
     Key key,
   }) : super(key: key);
@@ -26,8 +26,8 @@ class NotificationsSliverAppBar extends StatelessWidget {
               TextStyle(color: Colors.transparent, fontWeight: FontWeight.bold),
         ),
         background: Image.network(
-          'https://img.icons8.com/nolan/2x/push-notifications.png',
-          fit: BoxFit.contain,
+          'https://img.icons8.com/nolan/2x/helping-hand.png',
+          fit: BoxFit.fitHeight,
         ),
       ),
     );

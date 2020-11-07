@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/features/presentation/pages/account_details/account_page.dart';
+import 'package:second_app/features/presentation/pages/cart/cart_page.dart';
+import 'package:second_app/features/presentation/pages/messages/message_page.dart';
 import 'package:second_app/features/presentation/pages/notifications/notifications_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_page.dart';
 import 'package:second_app/features/presentation/pages/contacts/contact_page.dart';
 import 'package:second_app/features/presentation/pages/schedule/schedule_page.dart';
+import 'package:second_app/features/presentation/pages/shop/shop_page.dart';
 
 class ShopDrawer extends StatelessWidget {
   // const ShopDrawer({Key: key}) : super(key: key);
@@ -152,7 +155,7 @@ class ShopDrawer extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pop();
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => PortfolioPage()),
+          MaterialPageRoute(builder: (context) => CartPage()),
         );
       },
     );
@@ -198,7 +201,7 @@ class ShopDrawer extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pop();
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => PortfolioPage()),
+          MaterialPageRoute(builder: (context) => MessagePage()),
         );
       },
     );
@@ -290,7 +293,7 @@ class ShopDrawer extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pop();
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => PortfolioPage()),
+          MaterialPageRoute(builder: (context) => ShopPage()),
         );
       },
     );

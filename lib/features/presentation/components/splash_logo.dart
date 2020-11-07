@@ -19,7 +19,7 @@ class _SplashLogoState extends State<SplashLogo> {
   Widget build(BuildContext context) {
     return SplashScreen(
       routeName: "/",
-      seconds: 5,
+      seconds: 3,
       backgroundColor: Colors.black,
       image: Image.asset('assets/images/spinner2.gif'),
       loadingText: Text(

@@ -6,6 +6,10 @@ import 'package:second_app/features/presentation/pages/schedule/schedule_upcomin
 import 'package:second_app/features/presentation/pages/schedule/schedule_create_sub_page.dart';
 import 'package:tuple/tuple.dart';
 
+/*
+  REMINDER  // Import this root page in the shop_drawer.dart file so it shows up when clicked
+*/
+
 class SchedulePage extends StatefulWidget {
   @override
   _SchedulePageState createState() => _SchedulePageState();

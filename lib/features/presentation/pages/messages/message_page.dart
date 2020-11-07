@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/features/presentation/components/portfolio_sliver_app_bar.dart';
+import 'package:second_app/features/presentation/components/message_sliver_app_bar.dart';
 import 'package:second_app/features/presentation/delegates/sliver_persistent_header_delegate_impl.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_sub_page.dart';
@@ -10,18 +10,18 @@ import 'package:tuple/tuple.dart';
   REMINDER  // Import this root page in the shop_drawer.dart file so it shows up when clicked
 */
 
-class PortfolioPage extends StatefulWidget {
+class MessagePage extends StatefulWidget {
   @override
-  _PortfolioPageState createState() => _PortfolioPageState();
+  _MessagePageState createState() => _MessagePageState();
 }
 
-class _PortfolioPageState extends State<PortfolioPage>
+class _MessagePageState extends State<MessagePage>
     with SingleTickerProviderStateMixin {
   final List<Tuple3> _pages = [
-    Tuple3('Tutorials', PortfolioTutorialsSubPage(), Icon(Icons.video_library)),
-    Tuple3('Gallery', PortfolioGallerySubPage(), Icon(Icons.image)),
-    Tuple3(
-        'Projects', PortfolioProjectsSubPage(), Icon(Icons.app_registration)),
+    Tuple3('Friends', PortfolioTutorialsSubPage(), Icon(Icons.mobile_friendly)),
+    Tuple3('New Message', PortfolioGallerySubPage(), Icon(Icons.message)),
+    Tuple3('Hyper-Active', PortfolioProjectsSubPage(),
+        Icon(Icons.youtube_searched_for)),
   ];
 
   TabController _tabController;
@@ -45,7 +45,7 @@ class _PortfolioPageState extends State<PortfolioPage>
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-            PortfolioSliverAppBar(_pages[_tabController.index].item1),
+            MessageSliverAppBar(_pages[_tabController.index].item1),
             SliverPersistentHeader(
               delegate: SliverPersistentHeaderDelegateImpl(
                 color: Colors.purple,

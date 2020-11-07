@@ -6,7 +6,11 @@ import 'package:second_app/features/presentation/pages/portfolio/portfolio_galle
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_projects_sub_page.dart';
 import 'package:tuple/tuple.dart';
 
-//The main dart for AccountDetailsPage is named "account_page.dart"
+/*
+  REMINDER  // Import this root page in the shop_drawer.dart file so it shows up when clicked
+*/
+
+// AccountDetailsPage is named "account_page.dart", should be renamed
 
 class AccountDetailsPage extends StatefulWidget {
   @override

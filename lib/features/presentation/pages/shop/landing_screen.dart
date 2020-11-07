@@ -52,7 +52,7 @@ class LandingScreen extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
-                          "https://cdn.cnn.com/cnnnext/dam/assets/190316104519-how-you-reveal-identity-secrets-in-public-00000000-exlarge-169.jpg"),
+                          "https://cdn.searchenginejournal.com/wp-content/uploads/2019/05/facebookvideoranking.png"),
                     ),
                   ),
                 ),

@@ -6,6 +6,10 @@ import 'package:second_app/features/presentation/pages/portfolio/portfolio_galle
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_projects_sub_page.dart';
 import 'package:tuple/tuple.dart';
 
+/*
+  REMINDER  // Import this root page in the shop_drawer.dart file so it shows up when clicked
+*/
+
 class FeedbackPage extends StatefulWidget {
   @override
   _FeedbackPageState createState() => _FeedbackPageState();

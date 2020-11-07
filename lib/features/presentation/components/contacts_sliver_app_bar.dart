@@ -15,7 +15,7 @@ class ContactsSliverAppBar extends StatelessWidget {
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
-      backgroundColor: Colors.purple,
+      backgroundColor: Colors.purple[900],
       expandedHeight: 100,
       pinned: true,
       floating: true,
