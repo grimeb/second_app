@@ -42,7 +42,8 @@ class _ShopPageState extends State<ShopPage> {
   Widget _buildWebView() {
     return WebView(
       javascriptMode: JavascriptMode.unrestricted,
-      initialUrl: 'https://www.vincentdehart.com/contact',
+      initialUrl:
+          'https://www.securitymagazine.com/articles/93856-capcom-suffers-security-breach',
       onWebViewCreated: (WebViewController webViewController) {
         _controller.complete(webViewController);
       },

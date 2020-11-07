@@ -44,21 +44,26 @@ class ShopDrawer extends StatelessWidget {
   UserAccountsDrawerHeader _buildDrawerHeader(BuildContext context) {
     return UserAccountsDrawerHeader(
       accountName: Text(
-        'Tech Kwon Do',
+        '', // Tech Kwon Do
         style: TextStyle(
-            backgroundColor: Colors.black12, fontWeight: FontWeight.w900),
+            backgroundColor: Colors.transparent,
+            fontWeight: FontWeight.w900,
+            color: Colors.black),
       ),
       accountEmail: Text(
-        'TechKwonDo@outlook.com',
+        'Tech Kwon Do', // TechKwonDo@outlook.com
         style: TextStyle(
-            backgroundColor: Colors.black26, fontWeight: FontWeight.w900),
+            backgroundColor: Colors.transparent,
+            color: Colors.black,
+            fontWeight: FontWeight.bold),
       ),
       currentAccountPicture: GestureDetector(
         onTap: () => showDialog(
           context: context,
           child: AlertDialog(
             title: Text('Tech Kwon Do'),
-            content: Text('An about me website made using Google sites'),
+            content: Text(
+                'Visit my about me page at: vincentdehart.com\n\nOr contact me at: TechKwonDo@outlook.com'),
             actions: <Widget>[
               FlatButton(
                 child: Text('Close'),
@@ -67,15 +72,20 @@ class ShopDrawer extends StatelessWidget {
             ],
           ),
         ),
-        child: CircleAvatar(
-          backgroundColor: Colors.black,
-          backgroundImage: NetworkImage('https://i.imgur.com/3nKpoQ9.png'),
+        child: Container(
+          alignment: Alignment.bottomLeft,
+          child: Icon(
+            Icons.add_circle,
+            color: Colors.black,
+            size: 30,
+          ),
         ),
       ),
       decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage('https://i.redd.it/ivi678rpfhr21.jpg'))),
+              image: NetworkImage(
+                  'https://www.alamancechamber.com/wp-content/uploads/2017/04/HYPE-Logo-Final.png'))),
     );
   }
 

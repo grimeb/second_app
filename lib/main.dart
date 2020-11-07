@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'features/presentation/pages/shop/shop_page.dart';
-import 'features/presentation/pages/shop/splash_screen.dart';
+import 'features/presentation/components/splash_logo.dart';
 
 // Practice App made from watching tutorials from Himdeve development's YouTube channel.
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      home: SplashLogo(),
     );
   }
 }
