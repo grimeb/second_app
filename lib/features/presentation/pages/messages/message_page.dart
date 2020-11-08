@@ -23,7 +23,7 @@ class _MessagePageState extends State<MessagePage>
         'Friends', PortfolioTutorialsSubPage(), FaIcon(FontAwesomeIcons.users)),
     Tuple3('New Message', PortfolioGallerySubPage(), Icon(Icons.message)),
     Tuple3('Hyper-Active', PortfolioProjectsSubPage(),
-        FaIcon(FontAwesomeIcons.blenderPhone)),
+        FaIcon(FontAwesomeIcons.phoenixFramework)),
   ];
 
   TabController _tabController;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:second_app/features/presentation/components/feedback_sliver_app_bar.dart';
 import 'package:second_app/features/presentation/delegates/sliver_persistent_header_delegate_impl.dart';
-import 'package:second_app/features/presentation/pages/feedback/feedback_sub_page.dart';
+import 'package:second_app/features/presentation/pages/feedback/feedback_report_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_projects_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_sub_page.dart';
@@ -21,7 +21,7 @@ class _FeedbackPageState extends State<FeedbackPage>
     with SingleTickerProviderStateMixin {
   final List<Tuple3> _pages = [
     Tuple3(
-        'Report', PortfolioTutorialsSubPage(), FaIcon(FontAwesomeIcons.reply)),
+        'Report', FeedbackReportSubPage(), FaIcon(FontAwesomeIcons.reply)),
     Tuple3('Contact', PortfolioGallerySubPage(), FaIcon(FontAwesomeIcons.at)),
     Tuple3('ToS', PortfolioProjectsSubPage(),
         FaIcon(FontAwesomeIcons.fileContract)),
