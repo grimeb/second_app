@@ -80,6 +80,7 @@ class _AccountPersonalInfoSubPageState
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         RaisedButton(
+                          color: Colors.purple[500],
                           child: Text('Save'),
                           onPressed: () {
                             if (_fbKey.currentState.validate()) {
@@ -95,6 +96,7 @@ class _AccountPersonalInfoSubPageState
                           },
                         ),
                         RaisedButton(
+                          color: Colors.purple[500],
                           child: Text('Reset'),
                           onPressed: () {
                             _fbKey.currentState.reset();
@@ -107,6 +109,7 @@ class _AccountPersonalInfoSubPageState
                           },
                         ),
                         RaisedButton(
+                          color: Colors.purple[500],
                           child: Text('Forgot Login?'),
                           onPressed: () {
                             _fbKey.currentState.reset();
