@@ -5,7 +5,7 @@ import 'package:second_app/features/presentation/delegates/sliver_persistent_hea
 import 'package:second_app/features/presentation/pages/feedback/feedback_report_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_gallery_sub_page.dart';
 import 'package:second_app/features/presentation/pages/portfolio/portfolio_projects_sub_page.dart';
-import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_sub_page.dart';
+// import 'package:second_app/features/presentation/pages/portfolio/portfolio_tutorial_sub_page.dart';
 import 'package:tuple/tuple.dart';
 
 /*
@@ -20,8 +20,7 @@ class FeedbackPage extends StatefulWidget {
 class _FeedbackPageState extends State<FeedbackPage>
     with SingleTickerProviderStateMixin {
   final List<Tuple3> _pages = [
-    Tuple3(
-        'Report', FeedbackReportSubPage(), FaIcon(FontAwesomeIcons.reply)),
+    Tuple3('Report', FeedbackReportSubPage(), FaIcon(FontAwesomeIcons.reply)),
     Tuple3('Contact', PortfolioGallerySubPage(), FaIcon(FontAwesomeIcons.at)),
     Tuple3('ToS', PortfolioProjectsSubPage(),
         FaIcon(FontAwesomeIcons.fileContract)),

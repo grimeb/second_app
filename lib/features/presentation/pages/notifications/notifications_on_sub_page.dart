@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tuple/tuple.dart';
+// import 'package:tuple/tuple.dart';
 
 class NotificationsOnSubPage extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
